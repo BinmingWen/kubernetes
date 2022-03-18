@@ -1,0 +1,18 @@
+apiVersion: kubeadm.k8s.io/v1beta3 #版本信息参考kubeadm config print init-defaults命令结果
+kind: ClusterConfiguration
+kubernetesVersion: 1.23.0 #根据自己安装的k8s版本来写,版本信息参考kubeadm config print init-defaults命令结果
+imageRepository: registry.aliyuncs.com/google_containers #配置国内镜像
+
+apiServer:
+  extraArgs:
+    runtime-config: "api/all=true"
+
+#controllerManager:  新版本不支持
+#  extraArgs:
+#    horizontal-pod-autoscaler-use-rest-clients: "true"
+#    horizontal-pod-autoscaler-sync-period: "10s"
+#    node-monitor-grace-period: "10s"
+
+etcd:
+  local:
+    dataDir: /data/k8s/etcd
