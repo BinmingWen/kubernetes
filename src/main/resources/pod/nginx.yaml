@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  hostNetwork: true  #共享宿主机的network
+  hostIPC: true  #共享宿主机的ipc
+  hostPID: true  #共享宿主机的pid
+  #shareProcessNamespace: true
+  containers:
+    - name: nginx
+      image: nginx
+    - name: shell
+      image: busybox
+      stdin: true
+      tty: true
